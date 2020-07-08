@@ -1,0 +1,46 @@
+{
+  "name": "trinity",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "trinity order",
+  "permissions": [
+    "<all_urls>",
+    "activeTab",
+    "tabs",
+    "alarms",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "unlimitedStorage",
+    "notifications"
+  ],
+  "browser_action": {
+    "chrome_style": true,
+    "default_title": "Amazon Auto"
+  },
+  "background": {
+    "scripts": [
+      "jquery-3.5.1.min.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.ebay.com/**",        
+        "*://*.amazon.com/**",
+        "*://*.goDaddy.com/**",
+        "*://www.fedex.com/**"
+      ],
+      "js": [
+        "jquery-3.5.1.min.js",
+        "amazon.js",
+        "goDaddy.js",
+        "eBay.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [],
+  "minimum_chrome_version": "60"
+}
